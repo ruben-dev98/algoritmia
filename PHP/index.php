@@ -90,3 +90,24 @@ function finalValueAfterOperations($operations)
     }
     return $result;
 }
+
+/**
+ * @param String $jewels
+ * @param String $stones
+ * @return Integer
+ */
+function numJewelsInStones($jewels, $stones)
+{
+    $max_len_stones = strlen($stones);
+    $max_len_jewels = strlen($jewels);
+    $result = 0;
+
+    for ($i = 0; $i < $max_len_jewels; $i++) {
+        for ($j = 0; $j < $max_len_stones; $j++) {
+            if ($jewels[$i] === $stones[$j]) {
+                $result += 1;
+            }
+        }
+    }
+    return $result;
+}
