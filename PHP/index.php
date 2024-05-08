@@ -76,3 +76,17 @@ function defangIPaddr($address)
 {
     return str_replace('.', '[.]', $address);
 }
+
+/**
+ * @param String[] $operations
+ * @return Integer
+ */
+function finalValueAfterOperations($operations)
+{
+    $array = ['X++' => +1, '++X' => +1, 'X--' => -1, '--X' => -1];
+    $result = 0;
+    foreach ($operations as $key => $op) {
+        $result += $array[$op];
+    }
+    return $result;
+}
