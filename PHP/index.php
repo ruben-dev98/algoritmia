@@ -111,3 +111,19 @@ function numJewelsInStones($jewels, $stones)
     }
     return $result;
 }
+
+/**
+ * @param String[] $words
+ * @param String $x
+ * @return Integer[]
+ */
+function findWordsContaining($words, $x)
+{
+    $result = [];
+    foreach ($words as $key => $value) {
+        if (str_contains($value, $x)) {
+            $result[] = $key;
+        }
+    }
+    return $result;
+}
