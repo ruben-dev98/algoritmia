@@ -1,53 +1,68 @@
 <?php
+
 /**
  * @param String $s
  * @return Integer
  */
-function romanToInt($s) {
+function romanToInt($s)
+{
     $romanArray = [
         'I' => 1,
         'V' => 5,
         'X' => 10,
         'L' => 50,
         'C' => 100,
-        'D'=> 500,
+        'D' => 500,
         'M' => 1000
     ];
     $result = 0;
-    
-    for($i = 0; $i < strlen($s); $i++ ) {
+
+    for ($i = 0; $i < strlen($s); $i++) {
         $currentValue = $s[$i];
-        $nextValue = $s[$i+1];
-        $concatValue = $currentValue.$nextValue;
-        switch($concatValue) {
+        $nextValue = $s[$i + 1];
+        $concatValue = $currentValue . $nextValue;
+        switch ($concatValue) {
             case 'IV':
                 $result += 4;
                 $i++;
-            break;
+                break;
             case 'IX':
                 $result += 9;
                 $i++;
-            break;
+                break;
             case 'XL':
                 $result += 40;
                 $i++;
-            break;
+                break;
             case 'XC':
                 $result += 90;
                 $i++;
-            break;
+                break;
             case 'CD':
                 $result += 400;
                 $i++;
-            break;
+                break;
             case 'CM':
                 $result += 900;
                 $i++;
-            break;
+                break;
             default:
                 $result += $romanArray[$currentValue];
-            break;
+                break;
         }
     }
+    return $result;
+}
+
+function scoreOfString($s) {
+    $result = 0;
+    $len_string = strlen($s);
+    for($i = 0; $i < $len_string; $i++) {
+        if($i+1 === $len_string) {
+            break;
+        }
+        $result += abs(ord($s[$i]) - ord($s[$i+1]));
+    }
+
     return $result;
 }
