@@ -54,15 +54,25 @@ function romanToInt($s)
     return $result;
 }
 
-function scoreOfString($s) {
+function scoreOfString($s)
+{
     $result = 0;
     $len_string = strlen($s);
-    for($i = 0; $i < $len_string; $i++) {
-        if($i+1 === $len_string) {
+    for ($i = 0; $i < $len_string; $i++) {
+        if ($i + 1 === $len_string) {
             break;
         }
-        $result += abs(ord($s[$i]) - ord($s[$i+1]));
+        $result += abs(ord($s[$i]) - ord($s[$i + 1]));
     }
 
     return $result;
+}
+
+/**
+ * @param String $address
+ * @return String
+ */
+function defangIPaddr($address)
+{
+    return str_replace('.', '[.]', $address);
 }
