@@ -372,3 +372,22 @@ function toLowerCase($s)
 {
     return strtolower($s);
 }
+
+/**
+ * @param String $sentence
+ * @return Boolean
+ */
+function checkIfPangram($sentence)
+{
+    $range = range('a', 'z');
+    $arr = str_split($sentence);
+    $ans = [];
+    foreach ($arr as $s) {
+        if (in_array($s, $range)) {
+            if (!array_key_exists($s, $ans)) {
+                $ans[$s] = 1;
+            }
+        }
+    }
+    return count($ans) === count($range);
+}
