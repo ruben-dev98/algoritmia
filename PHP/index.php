@@ -281,3 +281,45 @@ function restoreString($s, $indices)
     ksort($newArray);
     return implode($newArray);
 }
+
+/**
+ * @param String[] $words
+ * @return String
+ */
+function firstPalindrome($words)
+{
+    $numberOfWords = count($words);
+    $palin = false;
+    for ($i = 0; $i < $numberOfWords; $i++) {
+        $numberOfChars = strlen($words[$i]);
+        if ($numberOfChars === 1) {
+            return $words[$i];
+        }
+        for ($j = 0; $j < $numberOfChars; $j++) {
+            $last = $numberOfChars - 1 - $j;
+            if ($j === $last) {
+                break;
+            }
+            if ($words[$i][$j] == $words[$i][$last]) {
+                $palin = true;
+            } else {
+                $palin = false;
+                break;
+            }
+        }
+        if ($palin) {
+            return $words[$i];
+        }
+    }
+    return '';
+}
+
+function bestFirstPalindrome($words)
+{
+    foreach ($words as $word) {
+        if ($word == strrev($word)) {
+            return $word;
+        }
+    }
+    return '';
+}
