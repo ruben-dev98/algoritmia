@@ -184,27 +184,41 @@ function reversePrefix($word, $ch)
 
 
 /**
-     * @param String $s
-     * @return Integer
-     */
-    function balancedStringSplit($s) {
-        //same number of L and R in same substring
-        $numsOfL = 0;
-        $numsOfR = 0;
-        $numsOfAns = 0;
-        
-        $split = str_split($s);
-        
-        foreach($split as $key => $val) {
-            if($val === 'R') {
-                $numsOfR++;
-            }
-            if($val === 'L') {
-                $numsOfL++;
-            }
-            if($numsOfL === $numsOfR) {
-                $numsOfAns++;
-            }
+ * @param String $s
+ * @return Integer
+ */
+function balancedStringSplit($s)
+{
+    //same number of L and R in same substring
+    $numsOfL = 0;
+    $numsOfR = 0;
+    $numsOfAns = 0;
+
+    $split = str_split($s);
+
+    foreach ($split as $key => $val) {
+        if ($val === 'R') {
+            $numsOfR++;
         }
-        return $numsOfAns;
+        if ($val === 'L') {
+            $numsOfL++;
+        }
+        if ($numsOfL === $numsOfR) {
+            $numsOfAns++;
+        }
     }
+    return $numsOfAns;
+}
+
+/**
+ * @param String[] $word1
+ * @param String[] $word2
+ * @return Boolean
+ */
+function arrayStringsAreEqual($word1, $word2)
+{
+    $firstWord = implode($word1);
+    $secondWord = implode($word2);
+
+    return $firstWord === $secondWord;
+}
