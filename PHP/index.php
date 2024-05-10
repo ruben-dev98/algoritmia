@@ -127,3 +127,13 @@ function findWordsContaining($words, $x)
     }
     return $result;
 }
+
+/**
+     * @param String $command
+     * @return String
+     */
+    function interpret($command) {
+        $replacedCommand = str_replace('(al)', 'al', $command);
+        $result = str_replace('()', 'o', $replacedCommand);
+        return $result;
+    }
