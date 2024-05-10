@@ -345,3 +345,21 @@ function cellsInRange($s)
 
     return $newArr;
 }
+
+/**
+ * @param String $s
+ * @return String
+ */
+function finalString($s)
+{
+    $result = '';
+    $split = str_split($s);
+    foreach ($split as $sp) {
+        if ($sp !== 'i') {
+            $result .= $sp;
+        } else {
+            $result = strrev($result);
+        }
+    }
+    return $result;
+}
