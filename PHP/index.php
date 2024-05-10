@@ -363,3 +363,12 @@ function finalString($s)
     }
     return $result;
 }
+
+/**
+ * @param String $s
+ * @return String
+ */
+function toLowerCase($s)
+{
+    return strtolower($s);
+}
