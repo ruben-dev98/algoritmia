@@ -181,3 +181,30 @@ function reversePrefix($word, $ch)
     $aReversed = array_reverse(str_split($a));
     return implode($aReversed) . $b;
 }
+
+
+/**
+     * @param String $s
+     * @return Integer
+     */
+    function balancedStringSplit($s) {
+        //same number of L and R in same substring
+        $numsOfL = 0;
+        $numsOfR = 0;
+        $numsOfAns = 0;
+        
+        $split = str_split($s);
+        
+        foreach($split as $key => $val) {
+            if($val === 'R') {
+                $numsOfR++;
+            }
+            if($val === 'L') {
+                $numsOfL++;
+            }
+            if($numsOfL === $numsOfR) {
+                $numsOfAns++;
+            }
+        }
+        return $numsOfAns;
+    }
