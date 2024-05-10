@@ -245,3 +245,23 @@ function truncateSentence($s, $k)
 
     return $result;
 }
+
+/**
+ * @param String[][] $items
+ * @param String $ruleKey
+ * @param String $ruleValue
+ * @return Integer
+ */
+function countMatches($items, $ruleKey, $ruleValue)
+{
+    $keys = ['type' => 0, 'color' => 1, 'name' => 2];
+    $ans = 0;
+    $keyType = $keys[$ruleKey];
+
+    foreach ($items as $key => $item) {
+        if ($item[$keyType] === $ruleValue) {
+            $ans++;
+        }
+    }
+    return $ans;
+}
