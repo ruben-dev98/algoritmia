@@ -129,11 +129,30 @@ function findWordsContaining($words, $x)
 }
 
 /**
-     * @param String $command
-     * @return String
-     */
-    function interpret($command) {
-        $replacedCommand = str_replace('(al)', 'al', $command);
-        $result = str_replace('()', 'o', $replacedCommand);
-        return $result;
+ * @param String $command
+ * @return String
+ */
+function interpret($command)
+{
+    $replacedCommand = str_replace('(al)', 'al', $command);
+    $result = str_replace('()', 'o', $replacedCommand);
+    return $result;
+}
+
+/**
+ * @param String[] $sentences
+ * @return Integer
+ */
+function mostWordsFound($sentences)
+{
+    $max_number_words = 0;
+    foreach ($sentences as $sentence) {
+        $arraySentence = explode(' ', $sentence);
+        $numberOfWords = count($arraySentence);
+        if ($max_number_words < $numberOfWords) {
+            $max_number_words = $numberOfWords;
+        }
     }
+
+    return $max_number_words;
+}
