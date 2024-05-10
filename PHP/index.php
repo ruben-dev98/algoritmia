@@ -265,3 +265,18 @@ function countMatches($items, $ruleKey, $ruleValue)
     }
     return $ans;
 }
+
+/**
+     * @param String $s
+     * @param Integer[] $indices
+     * @return String
+     */
+    function restoreString($s, $indices) {
+        $newArray = [];
+        $arrayStr = str_split($s);
+        for($i = 0; $i < count($arrayStr); $i++) {
+            $newArray[$indices[$i]] = $arrayStr[$i];
+        }
+        ksort($newArray);
+        return implode($newArray);
+    }
