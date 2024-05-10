@@ -222,3 +222,26 @@ function arrayStringsAreEqual($word1, $word2)
 
     return $firstWord === $secondWord;
 }
+
+/**
+ * @param String $s
+ * @param Integer $k
+ * @return String
+ */
+function truncateSentence($s, $k)
+{
+    $arr = explode(' ', $s);
+    $result = '';
+    foreach ($arr as $key => $val) {
+        if ($key === $k) {
+            break;
+        }
+
+        $result .= $val;
+        if ($key !== $k - 1) {
+            $result .= ' ';
+        }
+    }
+
+    return $result;
+}
