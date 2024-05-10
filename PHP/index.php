@@ -323,3 +323,25 @@ function bestFirstPalindrome($words)
     }
     return '';
 }
+
+/**
+ * @param String $s
+ * @return String[]
+ */
+function cellsInRange($s)
+{
+    $arr = str_split($s);
+    $range = range($arr[0], $arr[3]);
+    $number = range($arr[1], $arr[4]);
+    $rows = count($range);
+    $columns = count($number);
+    $newArr = [];
+
+    for ($i = 0; $i < $rows; $i++) {
+        for ($j = 0; $j < $columns; $j++) {
+            $newArr[] = $range[$i] . $number[$j];
+        }
+    }
+
+    return $newArr;
+}
