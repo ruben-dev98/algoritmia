@@ -156,3 +156,28 @@ function mostWordsFound($sentences)
 
     return $max_number_words;
 }
+
+/**
+ * @param String $word
+ * @param String $ch
+ * @return String
+ */
+function reversePrefix($word, $ch)
+{
+    $arrayCh = str_split($word);
+    $firstKey = -1;
+    foreach ($arrayCh as $key => $value) {
+        if ($value === $ch) {
+            $firstKey = $key;
+            break;
+        }
+    }
+    if ($firstKey === -1) {
+        return $word;
+    }
+
+    $a = substr($word, 0, $firstKey + 1);
+    $b = substr($word, $firstKey + 1);
+    $aReversed = array_reverse(str_split($a));
+    return implode($aReversed) . $b;
+}
