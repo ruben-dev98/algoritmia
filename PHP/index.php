@@ -525,3 +525,22 @@ function bestUniqueMorseRepresentations($words)
     }
     return count(array_unique($words));
 }
+
+/**
+ * @param String $s
+ * @return Integer
+ */
+function countAsterisks($s)
+{
+    $num_chars = strlen($s);
+    $result = 0;
+    $pairs = 0;
+    for ($i = 0; $i < $num_chars; $i++) {
+        if ($s[$i] === '*' && ($pairs % 2) === 0) {
+            $result += 1;
+        } else if ($s[$i] === '|') {
+            $pairs += 1;
+        }
+    }
+    return $result;
+}
