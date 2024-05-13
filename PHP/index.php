@@ -447,3 +447,34 @@ function sortSentence($s)
     ksort($result);
     return implode(' ', $result);
 }
+
+/**
+ * @param String $s
+ * @return String
+ */
+/*function maximumOddBinaryNumber($s)
+{
+    $a = intval($s);
+    return $a << 2;
+}*/
+
+/**
+ * @param String[] $words
+ * @param String $s
+ * @return Boolean
+ */
+function isAcronym($words, $s)
+{
+    $num_words = count($words);
+    $num_acro = strlen($s);
+    if ($num_acro != $num_words) {
+        return false;
+    }
+    for ($i = 0; $i < $num_words; $i++) {
+        if ($words[$i][0] !== $s[$i]) {
+            return false;
+        }
+    }
+
+    return true;
+}
