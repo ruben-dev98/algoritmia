@@ -544,3 +544,26 @@ function countAsterisks($s)
     }
     return $result;
 }
+
+/**
+ * @param String $s
+ * @return String
+ */
+function makeSmallestPalindrome($s)
+{
+    $num_chars = strlen($s);
+    $last = $num_chars - 1;
+    for ($i = 0; $i < $num_chars; $i++) {
+        $reverse = $last - $i;
+        if ($s[$reverse] !== $s[$i]) {
+            if ($s[$reverse] < $s[$i]) {
+                $s[$i] = $s[$reverse];
+            } else {
+                $s[$reverse] = $s[$i];
+            }
+        }
+    }
+
+    return $s;
+}
+
