@@ -405,3 +405,29 @@ function reverseWords($s)
 
     return implode(' ', $arr);
 }
+
+/**
+ * @param String $allowed
+ * @param String[] $words
+ * @return Integer
+ */
+function countConsistentStrings($allowed, $words)
+{
+    $result = 0;
+    for ($i = 0; $i < count($words); $i++) {
+        for ($j = 0; $j < strlen($words[$i]); $j++) {
+            if (str_contains($allowed, $words[$i][$j])) {
+                $is_allowed = true;
+            } else {
+                $is_allowed = false;
+                break;
+            }
+        }
+
+        if ($is_allowed) {
+            $result++;
+        }
+    }
+
+    return $result;
+}
