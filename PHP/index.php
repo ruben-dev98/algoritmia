@@ -391,3 +391,17 @@ function checkIfPangram($sentence)
     }
     return count($ans) === count($range);
 }
+
+/**
+ * @param String $s
+ * @return String
+ */
+function reverseWords($s)
+{
+    $arr = explode(' ', $s);
+    for ($i = 0; $i < count($arr); $i++) {
+        $arr[$i] =  strrev($arr[$i]);
+    }
+
+    return implode(' ', $arr);
+}
