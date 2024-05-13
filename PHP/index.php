@@ -567,3 +567,29 @@ function makeSmallestPalindrome($s)
     return $s;
 }
 
+function shift($letter, $number) {
+    $arr = range('a', 'z');
+    foreach($arr as $key => $value) {
+        if($value === $letter) {
+            return $arr[$key + $number];
+        }
+    }
+}
+
+/**
+ * @param String $s
+ * @return String
+ */
+function replaceDigits($s) {
+    $num_chars = strlen($s);
+    $result = '';
+    for($i = 0; $i < $num_chars; $i++) {
+        $prev = $i - 1;
+        if($i % 2 !== 0) {
+            $result .= shift($s[$prev], intval($s[$i]));
+        } else {
+            $result .= $s[$i];
+        }
+    }
+    return $result;
+}
