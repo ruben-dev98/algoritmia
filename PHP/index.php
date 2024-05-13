@@ -431,3 +431,19 @@ function countConsistentStrings($allowed, $words)
 
     return $result;
 }
+
+/**
+ * @param String $s
+ * @return String
+ */
+function sortSentence($s)
+{
+    $arr = explode(' ', $s);
+    for ($i = 0; $i < count($arr); $i++) {
+        $number = strlen($arr[$i]) - 1;
+        $key = $arr[$i][$number];
+        $result[$key] = substr($arr[$i], 0, $number);
+    }
+    ksort($result);
+    return implode(' ', $result);
+}
