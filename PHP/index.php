@@ -478,3 +478,50 @@ function isAcronym($words, $s)
 
     return true;
 }
+
+/**
+ * @param String[] $words
+ * @return Integer
+ */
+function uniqueMorseRepresentations($words)
+{
+    $morse_code = [
+        'a' => ".-", 'b' => "-...", 'c' => "-.-.",
+        'd' => "-..", 'e' => ".", 'f' => "..-.", 'g' => "--.",
+        'h' => "....", 'i' => "..", 'j' => ".---", 'k' => "-.-",
+        'l' => ".-..", 'm' => "--", 'n' => "-.", 'o' => "---",
+        'p' => ".--.", 'q' => "--.-", 'r' => ".-.", 's' => "...",
+        't' => "-", 'u' => "..-", 'v' => "...-", 'w' => ".--",
+        'x' => "-..-", 'y' => "-.--", 'z' => "--.."
+    ];
+    $trans = [];
+    $num_words = count($words);
+
+    for ($i = 0; $i < $num_words; $i++) {
+        $num_chars = strlen($words[$i]);
+        $word = '';
+        for ($j = 0; $j < $num_chars; $j++) {
+            $word .= $morse_code[$words[$i][$j]];
+        }
+        $trans[$word] = 1;
+    }
+
+    return count($trans);
+}
+
+/**
+ * @param String[] $words
+ * @return Integer
+ */
+function bestUniqueMorseRepresentations($words)
+{
+    $map = array_combine(range('a', 'z'), [".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--.."]);
+    foreach ($words as &$word) {
+        $chars = str_split(strtolower($word));
+        $word = '';
+        foreach ($chars as $char) {
+            $word .= $map[$char];
+        }
+    }
+    return count(array_unique($words));
+}
