@@ -685,3 +685,19 @@ function sortPeople($names, $heights)
     krsort($arr);
     return array_values($arr);
 }
+
+/**
+ * @param String $word1
+ * @param String $word2
+ * @return String
+ */
+function mergeAlternately($word1, $word2)
+{
+    $result = '';
+    $num_chars = strlen($word1) > strlen($word2) ? strlen($word1) : strlen($word2);
+    for ($i = 0; $i < $num_chars; $i++) {
+        $result .= $word1[$i] . $word2[$i];
+    }
+
+    return $result;
+}
