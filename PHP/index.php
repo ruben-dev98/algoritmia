@@ -846,13 +846,9 @@ function reverseString(&$s)
 }
 
 /**
-     * @param String $s
-     * @return Boolean
-     */
-    function areOccurrencesEqual($s) {
-        $len = strlen($s);
-        for($i = 0; $i < $len; $i++) {
-            
-        }
-
-    }
+ * @param String $s
+ * @return Boolean
+ */
+function areOccurrencesEqual($s)
+{
+}
