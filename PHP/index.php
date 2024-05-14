@@ -701,3 +701,26 @@ function mergeAlternately($word1, $word2)
 
     return $result;
 }
+
+/**
+ * @param String $s
+ * @return String
+ */
+function freqAlphabets($s)
+{
+    $result = '';
+    $arr = array_combine(range(1, 26), range('a', 'z'));
+    $arr_s = str_split($s);
+    for($i = 0; $i < count($arr_s); $i++) {
+        if($arr_s[$i + 2] === '#') {
+            $var = $arr_s[$i] . $arr_s[$i+1];
+            $result .= $arr[$var];
+            $i+=2;
+        } else {
+            $result .= $arr[$arr_s[$i]];
+        }
+    }
+    return $result;
+}
+
+echo freqAlphabets("10#11#12");
