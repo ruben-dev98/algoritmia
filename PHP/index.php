@@ -567,10 +567,11 @@ function makeSmallestPalindrome($s)
     return $s;
 }
 
-function shift($letter, $number) {
+function shift($letter, $number)
+{
     $arr = range('a', 'z');
-    foreach($arr as $key => $value) {
-        if($value === $letter) {
+    foreach ($arr as $key => $value) {
+        if ($value === $letter) {
             return $arr[$key + $number];
         }
     }
@@ -580,16 +581,35 @@ function shift($letter, $number) {
  * @param String $s
  * @return String
  */
-function replaceDigits($s) {
+function replaceDigits($s)
+{
     $num_chars = strlen($s);
     $result = '';
-    for($i = 0; $i < $num_chars; $i++) {
+    for ($i = 0; $i < $num_chars; $i++) {
         $prev = $i - 1;
-        if($i % 2 !== 0) {
+        if ($i % 2 !== 0) {
             $result .= shift($s[$prev], intval($s[$i]));
         } else {
             $result .= $s[$i];
         }
     }
     return $result;
+}
+
+/**
+ * @param String[] $words
+ * @return Integer
+ */
+function maximumNumberOfStringPairs($words)
+{
+    $arr = [];
+    $count = 0;
+    foreach ($words as $value) {
+        if ($arr[strrev($value)]) {
+            $count++;
+        } else {
+            $arr[$value] = '1';
+        }
+    }
+    return $count;
 }
