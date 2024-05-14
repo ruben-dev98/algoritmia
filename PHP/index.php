@@ -711,11 +711,11 @@ function freqAlphabets($s)
     $result = '';
     $arr = array_combine(range(1, 26), range('a', 'z'));
     $arr_s = str_split($s);
-    for($i = 0; $i < count($arr_s); $i++) {
-        if($arr_s[$i + 2] === '#') {
-            $var = $arr_s[$i] . $arr_s[$i+1];
+    for ($i = 0; $i < count($arr_s); $i++) {
+        if ($arr_s[$i + 2] === '#') {
+            $var = $arr_s[$i] . $arr_s[$i + 1];
             $result .= $arr[$var];
-            $i+=2;
+            $i += 2;
         } else {
             $result .= $arr[$arr_s[$i]];
         }
@@ -723,4 +723,39 @@ function freqAlphabets($s)
     return $result;
 }
 
-echo freqAlphabets("10#11#12");
+/**
+ * @param String $s
+ * @return Boolean
+ */
+function halvesAreAlike($s)
+{
+    $vowels = ['a', 'e', 'i', 'o', 'u'];
+    $half = strlen($s) / 2;
+    $arr = str_split($s, $half);
+    $first_halve = 0;
+    $second_halve = 0;
+    for ($i = 0; $i < strlen($arr[0]); $i++) {
+        if (in_array(strtolower($arr[0][$i]), $vowels)) {
+            $first_halve++;
+        }
+    }
+
+    for ($i = 0; $i < strlen($arr[1]); $i++) {
+        if (in_array(strtolower($arr[1][$i]), $vowels)) {
+            $second_halve++;
+        }
+    }
+    return $first_halve === $second_halve;
+}
+
+/**
+     * @param String $s
+     * @return Boolean
+     */
+    function bestHalvesAreAlike($s) {
+        list($a,$b) = str_split($s, ceil(strlen($s)/2));
+        preg_match_all('/[aeiou]/i', $a, $a_matches);
+        preg_match_all('/[aeiou]/i', $b, $b_matches);
+        return count($a_matches[0]) === count($b_matches[0]);
+
+    }
