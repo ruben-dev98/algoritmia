@@ -629,3 +629,32 @@ function numOfStrings($patterns, $word)
     }
     return $count;
 }
+
+/**
+ * @param String $rings
+ * @return Integer
+ */
+function countPoints($rings)
+{
+    $arr = [];
+    $r = 'R';
+    $g = 'G';
+    $b = 'B';
+    $count = 0;
+    for ($i = 0; $i < strlen($rings); $i++) {
+        if ($i % 2 === 0) {
+            $arr[$rings[$i + 1]][$rings[$i]] = 1;
+            $i++;
+        }
+    }
+
+    foreach ($arr as $key => $value) {
+        if (isset($value[$r]) && isset($value[$g]) && isset($value[$b])) {
+            $count++;
+        }
+    }
+
+    return $count;
+}
+
+
