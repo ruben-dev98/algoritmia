@@ -795,3 +795,27 @@ function removeTrailingZeros($num)
 
     return rtrim($num, '0');
 }
+
+/**
+ * @param String $coordinates
+ * @return Boolean
+ */
+function squareIsWhite($coordinates)
+{
+    $cords = str_split($coordinates);
+    $even = array_combine(range(1, 8), ['white', 'black', 'white', 'black', 'white', 'black', 'white', 'black']);
+    $odd = array_combine(range(1, 8), ['black', 'white', 'black', 'white', 'black', 'white', 'black', 'white']);
+    $chess = array_combine(range('a', 'h'), [$odd, $even, $odd, $even, $odd, $even, $odd, $even]);
+    return $chess[$cords[0]][$cords[1]] == 'white';
+}
+
+/**
+ * @param String $coordinates
+ * @return Boolean
+ */
+function bestSquareIsWhite($coordinates)
+{
+    $x = ord($coordinates[0]) - 96;
+    $y = (int) $coordinates[1];
+    return ($x % 2 !== $y % 2);
+}
