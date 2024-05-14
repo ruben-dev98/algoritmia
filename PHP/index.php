@@ -658,3 +658,18 @@ function countPoints($rings)
 }
 
 
+/**
+ * @param String $s
+ * @return Integer
+ */
+function countKeyChanges($s)
+{
+    $count = 0;
+    for ($i = 0; $i < strlen($s); $i++) {
+        if (strtolower($s[$i]) != strtolower($s[$i + 1]) && $i + 1 !== strlen($s)) {
+            $count++;
+        }
+    }
+
+    return $count;
+}
