@@ -613,3 +613,19 @@ function maximumNumberOfStringPairs($words)
     }
     return $count;
 }
+
+/**
+ * @param String[] $patterns
+ * @param String $word
+ * @return Integer
+ */
+function numOfStrings($patterns, $word)
+{
+    $count = 0;
+    for ($i = 0; $i < count($patterns); $i++) {
+        if (str_contains($word, $patterns[$i])) {
+            $count++;
+        }
+    }
+    return $count;
+}
