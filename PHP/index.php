@@ -784,3 +784,14 @@ function diStringMatch($s)
 
     return $arr;
 }
+
+
+/**
+ * @param String $num
+ * @return String
+ */
+function removeTrailingZeros($num)
+{
+
+    return rtrim($num, '0');
+}
