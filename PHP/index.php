@@ -819,3 +819,19 @@ function bestSquareIsWhite($coordinates)
     $y = (int) $coordinates[1];
     return ($x % 2 !== $y % 2);
 }
+
+/**
+ * @param String[] $words
+ * @param String $pref
+ * @return Integer
+ */
+function prefixCount($words, $pref)
+{
+    $count = 0;
+    foreach ($words as $word) {
+        if (str_starts_with($word, $pref)) {
+            $count++;
+        }
+    }
+    return $count;
+}
