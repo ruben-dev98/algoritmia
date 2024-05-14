@@ -835,3 +835,12 @@ function prefixCount($words, $pref)
     }
     return $count;
 }
+
+/**
+ * @param String[] $s
+ * @return NULL
+ */
+function reverseString(&$s)
+{
+    krsort($s);
+}
