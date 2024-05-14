@@ -749,13 +749,38 @@ function halvesAreAlike($s)
 }
 
 /**
-     * @param String $s
-     * @return Boolean
-     */
-    function bestHalvesAreAlike($s) {
-        list($a,$b) = str_split($s, ceil(strlen($s)/2));
-        preg_match_all('/[aeiou]/i', $a, $a_matches);
-        preg_match_all('/[aeiou]/i', $b, $b_matches);
-        return count($a_matches[0]) === count($b_matches[0]);
+ * @param String $s
+ * @return Boolean
+ */
+function bestHalvesAreAlike($s)
+{
+    list($a, $b) = str_split($s, ceil(strlen($s) / 2));
+    preg_match_all('/[aeiou]/i', $a, $a_matches);
+    preg_match_all('/[aeiou]/i', $b, $b_matches);
+    return count($a_matches[0]) === count($b_matches[0]);
+}
 
+/**
+ * @param String $s
+ * @return Integer[]
+ */
+function diStringMatch($s)
+{
+    $arr = [];
+    $chars = str_split($s);
+    $less = 0;
+    $more = strlen($s);
+
+    foreach ($chars as $ch) {
+        if ($ch == 'I') {
+            $arr[] = $less;
+            $less++;
+        } else {
+            $arr[] = $more;
+            $more--;
+        }
     }
+    $arr[] = $less;
+
+    return $arr;
+}
