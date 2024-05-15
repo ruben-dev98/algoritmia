@@ -851,4 +851,15 @@ function reverseString(&$s)
  */
 function areOccurrencesEqual($s)
 {
+    $num_apr = 0;
+    foreach (count_chars($s, 1) as $val) {
+        if($num_apr === 0) {
+            $num_apr = $val;
+            continue;
+        }
+        if($val !== $num_apr) {
+            return false;
+        }
+    }
+    return true;
 }
