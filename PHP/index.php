@@ -853,13 +853,36 @@ function areOccurrencesEqual($s)
 {
     $num_apr = 0;
     foreach (count_chars($s, 1) as $val) {
-        if($num_apr === 0) {
+        if ($num_apr === 0) {
             $num_apr = $val;
             continue;
         }
-        if($val !== $num_apr) {
+        if ($val !== $num_apr) {
             return false;
         }
     }
     return true;
 }
+
+
+function merge($nums1, $m, $nums2, $n)
+{
+    $rightIndex = $m + $n - 1;
+    $m--;
+    $n--;
+
+    while ($m >=0 && $n >= 0) {
+        if ($nums1[$m] > $nums2[$n]) {
+            $nums1[$rightIndex] = $nums1[$m--];
+        } else {
+            $nums1[$rightIndex] = $nums2[$n--];
+        }
+        $rightIndex--;
+    }
+
+    while ($n >= 0) {
+        $nums1[$rightIndex--] = $nums2[$n--];
+    }
+}
+
+print_r(merge([1,2,3,0,0,0], 3, [2,5,6], 3));
