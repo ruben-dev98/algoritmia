@@ -884,3 +884,24 @@ function merge($nums1, $m, $nums2, $n)
         $nums1[$rightIndex--] = $nums2[$n--];
     }
 }
+
+/**
+     * @param Integer[] $nums
+     * @param Integer $val
+     * @return Integer
+     */
+    function removeElement(&$nums, $val) {
+        $a = [];
+        $a1 = [];
+        for($i = 0; $i < count($nums); $i++) {
+            if($nums[$i] === $val) {
+                $a[] = '_';
+            } else {
+                $a1[] = $nums[$i];
+            }
+        }
+        $nums= [...$a1, ...$a];
+        return count($a1);
+    }
+
+    
