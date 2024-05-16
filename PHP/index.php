@@ -937,5 +937,24 @@ function merge($nums1, $m, $nums2, $n)
                 $k++;
             }
         }
+        
+        return $k;
+    }
+
+    /**
+     * @param Integer[] $nums
+     * @return Integer
+     */
+    function majorityElement($nums) {
+        $arr = array_count_values($nums);
+        $max = 0;
+        $k = 0;
+        foreach($arr as $key => $value) {
+            if($value > $max) {
+                $max = $value;
+                $k = $key;
+            }
+        }
+
         return $k;
     }
