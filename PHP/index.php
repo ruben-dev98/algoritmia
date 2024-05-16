@@ -904,4 +904,38 @@ function merge($nums1, $m, $nums2, $n)
         return count($a1);
     }
 
-    
+    /**
+     * @param Integer[] $nums
+     * @return Integer
+     */
+    function removeDuplicates(&$nums) {
+        $a = [];
+        $a1 = [];
+        for($i = 0; $i < count($nums); $i++) {
+            if($nums[$i] === $nums[$i + 1]) {
+                $a[] = '_';
+            } else {
+                $a1[] = $nums[$i];
+            }
+        }
+        $nums= [...$a1, ...$a];
+        return count($a1);
+    }
+
+    /**
+     * @param Integer[] $nums
+     * @return Integer
+     */
+    function removeDuplicatesTwiceAsMax(&$nums) {
+        $k = 2;
+        $count = count($nums);
+
+        for ($i = 1; $i < $count - 1; $i++) {
+            if ($nums[$i] === $nums[$i - 1] && $nums[$i] === $nums[$i + 1]){
+                unset($nums[$i - 1]);
+            }else{
+                $k++;
+            }
+        }
+        return $k;
+    }
