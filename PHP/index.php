@@ -1003,3 +1003,13 @@ function maxProfit($prices)
     }
     return $maxProfit;
 }
+
+/**
+ * @param String $s
+ * @return Integer
+ */
+function lengthOfLastWord($s)
+{
+    $arr = explode(' ', trim($s));
+    return strlen($arr[count($arr) - 1]);
+}
