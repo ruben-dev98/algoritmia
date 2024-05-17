@@ -979,3 +979,27 @@ function rotate(&$nums, $k)
 
     $nums = $result;
 }
+
+/**
+ * @param Integer[] $prices
+ * @return Integer
+ */
+function maxProfit($prices)
+{
+    $l = count($prices);
+    $minPrice = $prices[0];
+    $maxProfit = 0;
+
+    for ($i = 1; $i < $l; $i++) {
+        if ($minPrice > $prices[$i]) {
+            $minPrice = $prices[$i];
+        }
+
+        $profit = $prices[$i] - $minPrice;
+
+        if ($profit > $maxProfit) {
+            $maxProfit = $profit;
+        }
+    }
+    return $maxProfit;
+}
