@@ -1013,3 +1013,32 @@ function lengthOfLastWord($s)
     $arr = explode(' ', trim($s));
     return strlen($arr[count($arr) - 1]);
 }
+
+/**
+ * @param String $s
+ * @return String
+ */
+function sortString($s)
+{
+    $str = str_split($s);
+    sort($str);
+
+    $result = '';
+    while (count($str)) {
+        $prev = '';
+
+        foreach ($str as $key => $char) {
+            if ($char == $prev) {
+                continue;
+            }
+
+            $prev = $char;
+            $result .= $char;
+            unset($str[$key]);
+        }
+
+        $str = array_reverse($str);
+    }
+
+    return $result;
+}
