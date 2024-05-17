@@ -871,7 +871,7 @@ function merge($nums1, $m, $nums2, $n)
     $m--;
     $n--;
 
-    while ($m >=0 && $n >= 0) {
+    while ($m >= 0 && $n >= 0) {
         if ($nums1[$m] > $nums2[$n]) {
             $nums1[$rightIndex] = $nums1[$m--];
         } else {
@@ -886,75 +886,96 @@ function merge($nums1, $m, $nums2, $n)
 }
 
 /**
-     * @param Integer[] $nums
-     * @param Integer $val
-     * @return Integer
-     */
-    function removeElement(&$nums, $val) {
-        $a = [];
-        $a1 = [];
-        for($i = 0; $i < count($nums); $i++) {
-            if($nums[$i] === $val) {
-                $a[] = '_';
-            } else {
-                $a1[] = $nums[$i];
-            }
+ * @param Integer[] $nums
+ * @param Integer $val
+ * @return Integer
+ */
+function removeElement(&$nums, $val)
+{
+    $a = [];
+    $a1 = [];
+    for ($i = 0; $i < count($nums); $i++) {
+        if ($nums[$i] === $val) {
+            $a[] = '_';
+        } else {
+            $a1[] = $nums[$i];
         }
-        $nums= [...$a1, ...$a];
-        return count($a1);
+    }
+    $nums = [...$a1, ...$a];
+    return count($a1);
+}
+
+/**
+ * @param Integer[] $nums
+ * @return Integer
+ */
+function removeDuplicates(&$nums)
+{
+    $a = [];
+    $a1 = [];
+    for ($i = 0; $i < count($nums); $i++) {
+        if ($nums[$i] === $nums[$i + 1]) {
+            $a[] = '_';
+        } else {
+            $a1[] = $nums[$i];
+        }
+    }
+    $nums = [...$a1, ...$a];
+    return count($a1);
+}
+
+/**
+ * @param Integer[] $nums
+ * @return Integer
+ */
+function removeDuplicatesTwiceAsMax(&$nums)
+{
+    $k = 2;
+    $count = count($nums);
+
+    for ($i = 1; $i < $count - 1; $i++) {
+        if ($nums[$i] === $nums[$i - 1] && $nums[$i] === $nums[$i + 1]) {
+            unset($nums[$i - 1]);
+        } else {
+            $k++;
+        }
     }
 
-    /**
-     * @param Integer[] $nums
-     * @return Integer
-     */
-    function removeDuplicates(&$nums) {
-        $a = [];
-        $a1 = [];
-        for($i = 0; $i < count($nums); $i++) {
-            if($nums[$i] === $nums[$i + 1]) {
-                $a[] = '_';
-            } else {
-                $a1[] = $nums[$i];
-            }
+    return $k;
+}
+
+/**
+ * @param Integer[] $nums
+ * @return Integer
+ */
+function majorityElement($nums)
+{
+    $arr = array_count_values($nums);
+    $max = 0;
+    $k = 0;
+    foreach ($arr as $key => $value) {
+        if ($value > $max) {
+            $max = $value;
+            $k = $key;
         }
-        $nums= [...$a1, ...$a];
-        return count($a1);
     }
 
-    /**
-     * @param Integer[] $nums
-     * @return Integer
-     */
-    function removeDuplicatesTwiceAsMax(&$nums) {
-        $k = 2;
-        $count = count($nums);
+    return $k;
+}
 
-        for ($i = 1; $i < $count - 1; $i++) {
-            if ($nums[$i] === $nums[$i - 1] && $nums[$i] === $nums[$i + 1]){
-                unset($nums[$i - 1]);
-            }else{
-                $k++;
-            }
-        }
-        
-        return $k;
+/**
+ * @param Integer[] $nums
+ * @param Integer $k
+ * @return NULL
+ */
+function rotate(&$nums, $k)
+{
+    $len = count($nums);
+    $result = array_fill(0, $len, 0);
+
+    foreach ($nums as $i => $num) {
+        $result[($i + $k) % $len] = $num;
     }
 
-    /**
-     * @param Integer[] $nums
-     * @return Integer
-     */
-    function majorityElement($nums) {
-        $arr = array_count_values($nums);
-        $max = 0;
-        $k = 0;
-        foreach($arr as $key => $value) {
-            if($value > $max) {
-                $max = $value;
-                $k = $key;
-            }
-        }
-
-        return $k;
-    }
+    $nums = $result;
+}
